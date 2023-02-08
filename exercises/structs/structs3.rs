@@ -4,7 +4,7 @@
 // 使代码可以编译并通过测试！
 // 执行 `rustlings hint structs3` 或在观察模式下使用 `hint` 子命令来获取提示。
 
-// I AM NOT DONE
+
 
 #[derive(Debug)]
 struct Package {
@@ -26,12 +26,12 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
-        // 这边有东西...
+    fn is_international(&self) -> bool {
+        self.sender_country != self.recipient_country
     }
 
-    fn get_fees(&self, cents_per_gram: i32) -> ??? {
-        // 这边有东西...
+    fn get_fees(&self, cents_per_gram: i32) -> i32 {
+        self.weight_in_grams * cents_per_gram
     }
 }
 

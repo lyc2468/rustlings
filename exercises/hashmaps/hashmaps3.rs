@@ -37,6 +37,24 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // TODO: 使用从当前行提取的详细信息填充得分表。
         // 请记住，队伍1的得分将会是队伍2的丢分，
         // 同样，队伍2的得分也将会是队伍1的丢分。
+
+        let mut team1 = scores.entry(team_1_name).or_insert(Team {
+            name: v[2].parse().unwrap(),
+            goals_scored: 0,
+            goals_conceded: 0,
+        });
+
+        let mut team2 = scores.entry(team_2_name).or_insert(Team{
+            name: team_2_name.clone(),
+            goals_scored: 0,
+            goals_conceded: 0,
+        });
+
+        team1.goals_scored += team_1_score;
+        team1.goals_conceded += team_2_score;
+
+        team2.goals_scored += team_2_score;
+        team2.goals_conceded += team_1_score;
     }
     scores
 }
